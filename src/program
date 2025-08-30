@@ -1,0 +1,51 @@
+import react,{ useState } from 'react'
+import { useForm } from "react-hook-form"
+
+
+import './App.css'
+
+function App() {
+
+  const {
+    register,
+    handleSubmit,
+    watch,
+    formState: { errors },
+  } = useForm()
+
+  const onSubmit = (data) => console.log(data)
+
+  const [isLogin, setIsLogin] = useState(true)
+
+  const toggle = () => {
+    setIsLogin(!isLogin)
+    console.log('isLogin:', isLogin);
+  }
+
+  return (
+    <>
+     {/*  <button className='btn' onClick={toggle}>Click me</button> */}
+      {isLogin ? <><h1>Sign In</h1>
+        
+        <form onSubmit={handleSubmit(onSubmit)}>
+          <input {...register("username")} type="text" placeholder="Username" />
+          <input {...register("password")} type="password" placeholder="Password" />
+          <button type="submit">Login</button>
+        </form>
+        <p>Don't have an account? <span onClick={toggle} className='link'>Sign Up</span></p>
+      </>
+        : <><h1>Sign Up</h1>
+        
+        <form onSubmit={handleSubmit(onSubmit)}>
+          <input {...register("username")} type="text" placeholder="Username" />
+          <input {...register("email")} type="email" placeholder="Email" />
+          <input {...register("password")} type="password" placeholder="Password" />
+          <button type="submit">Register</button>
+        </form>
+        <p>Already have an account? <span onClick={toggle} className='link'>Sign In</span></p>
+        </>}
+    </>
+  )
+}
+
+export default App
