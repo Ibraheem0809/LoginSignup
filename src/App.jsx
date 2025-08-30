@@ -24,6 +24,8 @@ function App() {
       <div className="bg-white shadow-2xl rounded-xl p-8 w-full max-w-md">
         {isLogin ? (
           <>
+
+            <h2 className='flex justify-center align-middle text-2xl text-blue-600 my-2 font-extrabold'>Welcome to this project</h2>
             <h1 className="text-3xl font-bold text-center text-blue-600 mb-6">Sign In</h1>
             <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
               <input
